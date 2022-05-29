@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+/<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -63,7 +63,7 @@
 </div>
 <div class="form-group">
 <label>Photo</label>
-<input type="text" name="photo" class="form-control">
+<input type="file" name="photo" class="form-control">
 </div>
 <div class="form-group">
 <button type="submit" name="submit" value="submit" class="btn btn-primary">Submit</button>

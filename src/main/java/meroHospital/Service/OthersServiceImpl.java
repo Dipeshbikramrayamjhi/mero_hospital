@@ -25,18 +25,18 @@ public class OthersServiceImpl implements OthersService {
 	}
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		othersdoa.delete(id);
 		
 	}
 
 	public void edit(OthersModel othersmodel) {
-		// TODO Auto-generated method stub
+		othersdoa.edit(othersmodel);
 		
 	}
 
-	public OthersModel displayByid() {
+	public OthersModel displayByid(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return othersdoa.displayByid(id);
 	}
 	
 

@@ -17,7 +17,7 @@ public class InfoModel {
 	private String name;
 	private String address;
 	private long contactNumber;
-	private String email;
+	private String email; 
 	private String description;
 	private String photo;
 	
@@ -39,6 +39,18 @@ public class InfoModel {
 		//System.out.println("in model"+"name="+name+"address="+address+"contact="+contactNumber+"email="+"email="+email+"description="+description+"phto="+photo);
 		}
 	
+	
+	public InfoModel(Integer iid, String name, String address, long contactNumber, String email, String description,
+			String photo) {
+		super();
+		this.iid = iid;
+		this.name = name;
+		this.address = address;
+		this.contactNumber = contactNumber;
+		this.email = email;
+		this.description = description;
+		this.photo = photo;
+	}
 	public int getIid() {
 		return iid;
 	}

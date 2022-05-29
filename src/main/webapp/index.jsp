@@ -1,6 +1,13 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
 <body>
-<h2>Hello World!</h2>
-<a href="admin/dashboard">Dashboard</a>
+<p><a href="intro">Frontend</a></p>
+<p><a href="admin/dashboard">backend</a></p>
 </body>
+
 </html>

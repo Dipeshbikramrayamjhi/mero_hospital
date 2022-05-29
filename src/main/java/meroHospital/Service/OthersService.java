@@ -11,6 +11,6 @@ public interface OthersService {
 	public List<OthersModel> display();
 	public void delete(int id);
 	public void edit(OthersModel othersmodel);
-	public OthersModel displayByid();
+	public OthersModel displayByid(int id);
 
 }

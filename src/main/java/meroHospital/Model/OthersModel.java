@@ -26,6 +26,14 @@ public class OthersModel {
 		this.othersName = othersName;
 		this.aboutCheckup = aboutCheckup;
 	}
+	
+
+	public OthersModel(Integer oid, String othersName, String aboutCheckup) {
+		super();
+		this.oid = oid;
+		this.othersName = othersName;
+		this.aboutCheckup = aboutCheckup;
+	}
 
 	public String getOthersName() {
 		return othersName;

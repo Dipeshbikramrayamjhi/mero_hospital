@@ -56,18 +56,25 @@
     </tr>
   </thead>
   <tbody>
- < c:forEach var="list" items="${infolist}">
+<c:set var = "count" value = "1"/>
+ <c:forEach var="list" items="${infolist}">
 <tr>
-<td>${list.iid}</td>
-<td>${list.photo}</td>
+<td>${count}</td>
+<td><img src = "${pageContext.request.contextPath }/image/hospital/${list.photo}" height ="50px" alt="${list.photo}" ></td>
 <td>${list.name }</td>
 <td>${list.address }</td>
 <td>${list.contactNumber }</td>
 <td>${list.email }</td>
 <td>${list.description }</td>
-<td><a href="info_display?delete=${list.iid}">DELETE</a></td>
-<td><a href="info_update?update=${list.iid}">UPDATE</a></td>
+<td>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirm_delete" data-delete="${list.iid }">
+<span class="fa fa-trash"></span>
+</button>
+</td>
+<td><a href="info_update/${list.iid}"><i class="fa fa-edit"></i></a></td>
 </tr>
+<c:set var = "count" value = "${count + 1 }"/>
 </c:forEach>
   </tbody>
   </table>
@@ -78,6 +85,37 @@
  <%@include file = "footer.jsp" %>
 </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="confirm_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">DELETE CONFORMATION</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        DO YOU REALLY WANT TO DELETE ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+        <button type="button" class="btn btn-danger" id="delBtn">DELETE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$("#confirm_delete").on("show.bs.modal",function(e)
+{
+var deleteid = $(e.relatedTarget).data('delete');
+$("#delBtn").attr('onClick','location.href = "${pageContext.request.contextPath}/admin/info_delete/' + deleteid + '"');
+});
+</script>
+
+
 
 </body>
 </html>

@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+
 <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -31,5 +26,10 @@
     <!-- Page level custom scripts -->
     <script src="${pageContext.request.contextPath}/assests/js/demo/chart-area-demo.js"></script>
     <script src="${pageContext.request.contextPath}/assests/js/demo/chart-pie-demo.js"></script>
-</body>
-</html>
+    <script src="${pageContext.request.contextPath}/assests/js/select2.min.js"></script>
+<script>
+$('#dpt').select2({
+  placeholder:"Select Department"
+});
+
+</script>

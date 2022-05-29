@@ -11,7 +11,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="${pageContext.request.contextPath }/assests/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assests/css/sb-admin-2.min.css" rel="stylesheet">
  
 <meta charset="ISO-8859-1">
 <title>Others Checkup Information  form</title>
@@ -43,7 +43,7 @@
 <form action="" method="post" class="form-group">
 
 <div class="form-group">
-<label>Cheakup Name</label>
+<label>Checkup Name</label>
 <input type="text" name="othersName" class="form-control">
 </div>
 <div class="form-group">
@@ -71,15 +71,19 @@
     </tr>
   </thead>
   <tbody>
-
-< c:forEach var="list" items="${display}">
+<c:set var = "count" value = "1"/>
+<c:forEach var="list" items="${display}">
 <tr>
-<td>${list.oid}</td>
+<td>${count}</td>
 <td>${list.othersName}</td>
 <td>${list.aboutCheckup}</td>
-<td><a href="#?delete=${list.oid}">DELETE</a></td>
-<td><a href="#?update=${list.oid}">UPDATE</a></td>
+<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dr_delete" data-delete="${list.oid }">
+<span class="fa fa-trash"></span>
+</button>
+</td>
+<td><a href="others_update/${list.oid}"><i class="fa fa-edit"></i></a></td>
 </tr>
+<c:set var = "count" value = "${count + 1 }"/>
 </c:forEach>
   </tbody>
   </table>
@@ -94,6 +98,35 @@
  <%@include file = "footer.jsp" %>
 </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="dr_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">DELETE CONFORMATION</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        DO YOU REALLY WANT TO DELETE ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+        <button type="button" class="btn btn-danger" id="delBtn">DELETE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$("#dr_delete").on("show.bs.modal",function(e)
+{
+var deleteid = $(e.relatedTarget).data('delete');
+$("#delBtn").attr('onClick','location.href = "${pageContext.request.contextPath}/admin/others_delete/' + deleteid + '"');
+});
+</script>
 
 </body>
 </html>

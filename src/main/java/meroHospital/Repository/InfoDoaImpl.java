@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import meroHospital.Model.InfoModel;
 
 @Repository
@@ -42,18 +43,43 @@ public class InfoDoaImpl implements InfoDoa{
 
 	public void delete(int id) {
 		// TODO Auto-generated method stub
+		InfoModel infoModel = new InfoModel();
+		infoModel.setIid(id);
+		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.delete(infoModel);;
+		tx.commit();   
+		sess.close();
 		
 	}
 
 	public void edit(InfoModel info) {
-		// TODO Auto-generated method stub
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		@SuppressWarnings("unchecked")
+		Query<InfoModel> q = s.createQuery("from InfoModel s where iid = :id");
+		q.setParameter("id", info.getIid());
+		s.update(info);
+		tx.commit();
+		s.close();
+	
 		
 	}
 
-	public InfoModel displayByid() {
-		// TODO Auto-generated method stub
-		return null;
+	public InfoModel displayByid(int id) {
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		@SuppressWarnings("unchecked")
+		Query<InfoModel> q = s.createQuery("from InfoModel s where iid = :id");
+		q.setParameter("id", id);
+		InfoModel infomodel = q.getSingleResult();
+		tx.commit();
+		s.close();
+		return infomodel ;
+		
 	}
+
+	
 	
 
 	

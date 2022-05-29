@@ -100,6 +100,22 @@
                
             </li>
             
+               <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#schedule"
+                    aria-expanded="false" aria-controls="collapseUtilities">
+                    <i class="fa fa-user-md"></i>
+                    <span>Appointment Schedule </span>
+                </a>
+               <div id="schedule" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Schedule Info Operation:</h6>
+                        <a class="collapse-item" href="${pageContext.request.contextPath }/admin/schedule">INSERT FORM</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath }/admin/schedule_display">DISPLAY DETAIL</a>
+                    </div>
+                </div>
+            </li>
+            
+            
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#checkup"
                     aria-expanded="false" aria-controls="collapseUtilities">
@@ -116,7 +132,15 @@
             </li>
             
              <li class="nav-item">
-                <a class="nav-link collapsed" href="#" >
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath }/admin/lab_report" >
+                    <i class="fa fa-question-circle"></i>
+                    <span>Upload Lap Report </span>
+                </a>
+               
+            </li>
+            
+             <li class="nav-item">
+                <a class="nav-link collapsed" href="${pageContext.request.contextPath }/admin/enqiure_display" >
                     <i class="fa fa-question-circle"></i>
                     <span>Enquire </span>
                 </a>

@@ -9,6 +9,6 @@ public interface DepartmentDoa {
 	public List<DepartmentModel> display();
 	public void delete(int id);
 	public void edit(DepartmentModel departmentModel);
-	public DepartmentModel displayByid();
+	public DepartmentModel displayByid(int id);
 
 }

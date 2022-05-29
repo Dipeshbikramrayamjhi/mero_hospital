@@ -14,6 +14,8 @@ import meroHospital.Model.DepartmentModel;
 
 
 
+
+
 @Repository
 @Transactional
 public class DepartmentDoaImpl implements DepartmentDoa {
@@ -33,22 +35,42 @@ public class DepartmentDoaImpl implements DepartmentDoa {
 		Transaction tx = s.beginTransaction();
 		List<DepartmentModel> sl;
 		@SuppressWarnings("unchecked")
-		Query<DepartmentModel> q = s.createQuery("from DepartmentModel department");
+		Query<DepartmentModel> q = s.createQuery("from DepartmentModel s");
 		sl = q.getResultList();
 		tx.commit();
 		s.close();
 		return sl;
 	}
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		DepartmentModel dptModel = new DepartmentModel();
+		dptModel.setDid(id);
+		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.delete(dptModel);;
+		tx.commit();   
+		sess.close();
 		
 	}
 	public void edit(DepartmentModel departmentModel) {
-		// TODO Auto-generated method stub
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		@SuppressWarnings("unchecked")
+		Query<DepartmentModel> q = s.createQuery("from DepartmentModel s where did = :id");
+		q.setParameter("id", departmentModel.getDid());
+		s.update(departmentModel);
+		tx.commit();
+		s.close();
 		
 	}
-	public DepartmentModel displayByid() {
-		// TODO Auto-generated method stub
-		return null;
+	public DepartmentModel displayByid(int id) {
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		@SuppressWarnings("unchecked")
+		Query<DepartmentModel> q = s.createQuery("from DepartmentModel s where did = :id");
+		q.setParameter("id", id);
+		DepartmentModel departmentmodel = q.uniqueResult();
+		tx.commit();
+		s.close();
+		return departmentmodel ;
 	}
 }

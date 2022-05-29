@@ -1,9 +1,12 @@
-package meroHospital.Model;
+ package meroHospital.Model;
+
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,18 +19,63 @@ public class DepartmentModel {
 	private String departmentName ;
 	private String relatedDisease ;
 	private String aboutDepartment;
+	@OneToMany(mappedBy = "department")
+	private List<DoctorModel> doctors;
 	
 	public DepartmentModel()
 	{
 		
 	}
 
+	
 	public DepartmentModel(String departmentName, String relatedDisease, String aboutDepartment) {
 		super();
 		this.departmentName = departmentName;
 		this.relatedDisease = relatedDisease;
 		this.aboutDepartment = aboutDepartment;
 	}
+
+	
+	public DepartmentModel(Integer did, String departmentName, String relatedDisease, String aboutDepartment) {
+		super();
+		this.did = did;
+		this.departmentName = departmentName;
+		this.relatedDisease = relatedDisease;
+		this.aboutDepartment = aboutDepartment;
+	}
+
+
+	public DepartmentModel(Integer did, String departmentName, String relatedDisease, String aboutDepartment,
+			List<DoctorModel> doctors) {
+		super();
+		this.did = did;
+		this.departmentName = departmentName;
+		this.relatedDisease = relatedDisease;
+		this.aboutDepartment = aboutDepartment;
+		this.doctors = doctors;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	public List<DoctorModel> getDoctors() {
+		return doctors;
+	}
+
+
+
+	public void setDoctors(List<DoctorModel> doctors) {
+		this.doctors = doctors;
+	}
+
+
 
 	public Integer getDid() {
 		return did;

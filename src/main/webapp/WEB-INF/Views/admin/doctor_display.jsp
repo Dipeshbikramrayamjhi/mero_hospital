@@ -56,21 +56,28 @@
       
     </tr>
   </thead>
-  <!-- <tbody>
- < c:forEach var="list" items="${infolist}">
+  <tbody>
+  <c:set var = "count" value = "1"/>
+ <c:forEach var="list" items="${displaylist}">
 <tr>
-<td>${list.iid}</td>
-<td>${list.photo}</td>
-<td>${list.name }</td>
-<td>${list.address }</td>
-<td>${list.contactNumber }</td>
-<td>${list.email }</td>
-<td>${list.description }</td>
-<td><a href="info_display?delete=${list.iid}">DELETE</a></td>
-<td><a href="info_update?update=${list.iid}">UPDATE</a></td>
+<td>${count}</td>
+<td><img src = "${pageContext.request.contextPath }/image/doctor/${list.doctorPhoto}" alt="${list.doctorPhoto}" height="60px">
+</td>
+<td>${list.doctorName }</td>
+<td>${list.graduation }</td>
+<td>${list.specialist }</td>
+<td>${list.department.departmentName }</td>
+<td>${list.workExperience }</td>
+<td>${list.awardInfo }</td>
+<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dr_delete" data-delete="${list.did }">
+<span class="fa fa-trash"></span>
+</button>
+</td>
+<td><a href="doctor_update/${list.did}"><i class="fa fa-edit"></i></a></td>
 </tr>
+<c:set var = "count" value = "${count + 1 }"/>
 </c:forEach>
-  </tbody> -->
+  </tbody>
   </table>
 </div>
 </div>
@@ -79,6 +86,35 @@
  <%@include file = "footer.jsp" %>
 </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="dr_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">DELETE CONFORMATION</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        DO YOU REALLY WANT TO DELETE ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+        <button type="button" class="btn btn-danger" id="delBtn">DELETE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$("#dr_delete").on("show.bs.modal",function(e)
+{
+var deleteid = $(e.relatedTarget).data('delete');
+$("#delBtn").attr('onClick','location.href = "${pageContext.request.contextPath}/admin/doctor_delete/' + deleteid + '"');
+});
+</script>
 
 </body>
 </html>

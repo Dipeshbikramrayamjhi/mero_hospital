@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,26 +40,30 @@
   
   <h2><i class="glyphicon glyphicon-user"></i> DOCTOR INFORMATION FORM</h2>
 
-<form action="" method="post" class="form-group">
+<form action="" method="post" class="form-group" enctype = "multipart/form-data">
 <div class="form-group">
 <label>Doctor Name</label>
 <input type="text" name="doctorName" class="form-control">
 </div>
 <div class="form-group">
 <label>Photo</label>
-<input type="text" name="doctorPhoto" class="form-control">
+<input type="file" name="doctorPhoto" class="form-control">
 </div>
 <div class="form-group">
 <label>Graduation / Degree</label>
 <input type="text" name="graduation" class="form-control">
 </div>
 <div class="form-group">
-<label for="sub_code">Specialist</label>
+<label>Specialist</label>
 <input type="text" name="specialist" class="form-control">
 </div>
 <div class="form-group">
-<label>Department</label>
-<input type="email" name="department" class="form-control">
+<label>Department Name</label>
+<select name="dpt_id"  class="form-control" id="dpt" >
+<c:forEach var="list" items="${dptlist}">
+<option value = "${list.did}" >${list.departmentName}</option>
+</c:forEach>
+</select>
 </div>
 <div class="form-group">
 <label>Work Experience</label>

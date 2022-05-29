@@ -40,31 +40,32 @@
   
   
 
-<form action="" method="post" class="form-group">
-
+<form action="" method="post" class="form-group" enctype = "multipart/form-data">
+<input type="text" name="iid" class="form-control" value ="${singleList.iid }" hidden>
 <div class="form-group">
 <label>Hospital Name</label>
-<input type="text" name="name" class="form-control">
+<input type="text" name="name" class="form-control" value ="${singleList.name }">
 </div>
 <div class="form-group">
 <label>Address</label>
-<input type="text" name="address" class="form-control">
+<input type="text" name="address" class="form-control" value="${singleList.address }" >
 </div>
 <div class="form-group">
 <label for="sub_code">Contact Number</label>
-<input type="text" name="contactNumber" class="form-control">
+<input type="text" name="contactNumber" class="form-control" value="${singleList.contactNumber }">
 </div>
 <div class="form-group">
 <label>Email</label>
-<input type="email" name="email" class="form-control">
+<input type="email" name="email" class="form-control" value=" ${singleList.email }">
 </div>
 <div class="form-group">
 <label>Description</label>
-<textarea name="description" class="form-control" rows="9"></textarea> 
+<textarea name="description" class="form-control" rows="9" >${singleList.description }</textarea> 
 </div>
 <div class="form-group">
 <label>Photo</label>
-<input type="text" name="photo" class="form-control">
+<img alt="${singleList.photo }" src="${pageContext.request.contextPath }/image/hospital/${singleList.photo }" height = "100px">
+<input type="file" name="photo" class="form-control" value = "${singleList.photo }">
 </div>
 <div class="form-group">
 <button type="submit" name="submit" value="submit" class="btn btn-primary">UPDATE</button>

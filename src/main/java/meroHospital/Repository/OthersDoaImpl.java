@@ -10,7 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import meroHospital.Model.InfoModel;
+
+
 import meroHospital.Model.OthersModel;
 
 @Repository
@@ -44,18 +45,39 @@ public class OthersDoaImpl implements OthersDoa {
 	}
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		OthersModel othersModel = new OthersModel();
+		othersModel.setOid(id);
+		Session sess = sf.openSession();
+		Transaction tx = sess.beginTransaction();
+		sess.delete(othersModel);;
+		tx.commit();   
+		sess.close();
 		
 	}
 
 	public void edit(OthersModel othersmodel) {
-		// TODO Auto-generated method stub
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		@SuppressWarnings("unchecked")
+		Query<OthersModel> q = s.createQuery("from OthersModel s where oid = :oid");
+		q.setParameter("oid", othersmodel.getOid());	
+		s.update(othersmodel);
+		tx.commit();
+		s.close();
+		
 		
 	}
 
-	public OthersModel displayByid() {
-		// TODO Auto-generated method stub
-		return null;
+	public OthersModel displayByid(int id) {
+		Session s = sf.openSession();
+		Transaction tx = s.beginTransaction();
+		@SuppressWarnings("unchecked")
+		Query<OthersModel> q = s.createQuery("from OthersModel s where oid = :id");
+		q.setParameter("id", id);
+		OthersModel othersModel = q.getSingleResult();
+		tx.commit();
+		s.close();
+		return othersModel ;
 	}
 
 }

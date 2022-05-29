@@ -26,18 +26,18 @@ public class InfoServiceImpl implements InfoService{
 	}
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
+		infodoa.delete(id);
 		
 	}
 
 	public void edit(InfoModel info) {
-		// TODO Auto-generated method stub
+		infodoa.edit(info);
 		
 	}
 
-	public InfoModel displayByid() {
+	public InfoModel displayByid(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return infodoa.displayByid(id);
 	}
 
 }

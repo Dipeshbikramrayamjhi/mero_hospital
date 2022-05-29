@@ -27,17 +27,19 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	public void delete(int id) {
 		// TODO Auto-generated method stub
+		departmentdoa.delete(id);
 		
 	}
 
-	public void edit(DepartmentModel departmentModel) {
+	public void edit(DepartmentModel departmentModel   ) {
 		// TODO Auto-generated method stub
+		departmentdoa.edit(departmentModel);
 		
 	}
 
-	public DepartmentModel displayByid() {
+	public DepartmentModel displayByid(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return departmentdoa.displayByid(id);
 	}
 	
 

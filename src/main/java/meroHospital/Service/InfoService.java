@@ -10,6 +10,6 @@ public interface InfoService {
 	public List<InfoModel> display();
 	public void delete(int id);
 	public void edit(InfoModel info);
-	public InfoModel displayByid();
+	public InfoModel displayByid(int id);
 	
 }

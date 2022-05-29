@@ -62,7 +62,7 @@
 
  <div class="col-md-8">
   
-  <h2><i class="glyphicon glyphicon-user"></i>HOSPITAL INFORMATION DISPLAY</h2>
+  <h2><i class="glyphicon glyphicon-user"></i>DEPARTMENT INFORMATION DISPLAY</h2>
 
 <table class="table table-striped table-dark">
   <thead>
@@ -77,15 +77,20 @@
     </tr>
   </thead>
   <tbody>
- < c:forEach var="list" items="${display}">
+  <c:set var = "count" value = "1"/>
+ <c:forEach var="list" items="${display}">
 <tr>
-<td>${list.did}</td>
+<td>${count}</td>
 <td>${list.departmentName}</td>
 <td>${list.relatedDisease }</td>
 <td>${list.aboutDepartment }</td>
-<td><a href="#?delete=${list.did}">DELETE</a></td>
-<td><a href="#?update=${list.did}">UPDATE</a></td>
+<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dpt_delete" data-delete="${list.did }">
+<span class="fa fa-trash"></span>
+</button>
+</td>
+<td><a href="department_update/${list.did}"><i class="fa fa-edit"></i></a></td>
 </tr>
+<c:set var = "count" value = "${count + 1 }"/>
 </c:forEach>
   </tbody>
   </table>
@@ -96,6 +101,36 @@
  <%@include file = "footer.jsp" %>
 </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="dpt_delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">DELETE CONFORMATION</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        DO YOU REALLY WANT TO DELETE ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+        <button type="button" class="btn btn-danger" id="delBtn">DELETE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$("#dpt_delete").on("show.bs.modal",function(e)
+{
+var deleteid = $(e.relatedTarget).data('delete');
+$("#delBtn").attr('onClick','location.href = "${pageContext.request.contextPath}/admin/department_delete/' + deleteid + '"');
+});
+</script>
+
 
 </body>
 </html>
