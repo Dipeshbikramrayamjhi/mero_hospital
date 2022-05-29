@@ -12,6 +12,7 @@ public class AdminController {
 	@GetMapping("/dashboard")
 	public String openDashboard()
 	{
+		//this will open admin
 		return "admin/dashboard";
 	}
 
